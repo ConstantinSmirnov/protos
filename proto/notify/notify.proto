@@ -1,0 +1,23 @@
+// Версия protobuf
+syntax = "proto3";
+
+// Наименование
+package notify;
+
+// Опция генерации на Go
+option go_package = "investroom.notify.v1;notifyv1";
+
+// Сревис нотивикации у которого будет 3 метода
+service Notify {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+}
+
+
+message RegisterRequest {
+  int32 app_id = 1; // ID of the app
+  string uuid = 2; // UUID to access
+}
+
+message RegisterResponse {
+  bool is_allow = 1; // Allow request or not
+}
